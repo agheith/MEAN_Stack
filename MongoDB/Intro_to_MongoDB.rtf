@@ -1,0 +1,212 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf760
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red63\green63\blue63;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\cssrgb\c31373\c31373\c31373;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww20160\viewh12700\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb1 \CocoaLigature0 Assignment Instructions:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl504\partightenfactor0
+\ls1\ilvl0\cf2 \CocoaLigature1 {\listtext	1.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Create a database called 'my_first_db'.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Create students collection. Each document you insert into this collection should have the following format: (\{name: STRING, home_state: STRING, lucky_number: NUMBER, birthday: \{month: NUMBER, day: NUMBER, year: NUMBER\}\})\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Create 5 students with the appropriate info. Get all students. Retrieve all students who are from California (San Jose Dojo) or Washington (Seattle Dojo). Get all students whose lucky number is: greater than 3 less than or equal to 10 between 1 and 9 (inclusive)\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  Add a field to each student collection called 'interests' that is an ARRAY. \'a0It should contain the following entries: 'coding', 'brunch', 'MongoDB'.\'a0Do this in ONE operation.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Add some unique interests for each particular students into each of their interest arrays. \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	6.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Add the interest 'taxes' into someone's interest array. \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	7.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Remove the 'taxes' interest you just added. \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	8.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Remove all students who are from California (or Washington). \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	9.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Remove a user by name.\'a0 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	10.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Remove a student whose lucky number is greater than 5 (JUST ONE)Add a field to each student collection called 'number_of_belts' and set it to 0.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	11.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Increment this field by 1 for all students in Washington (Seattle Dojo).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	12.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Rename the 'number_of_belts' field to 'belts_earned'Remove the 'lucky_number' field.Add a 'updated_on' field, and set the value as the current date.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\
+\
+> use my_first_db\
+switched to db my_first_db\
+> show collections\
+students\
+> db.students.insert(\{name:"Amer", home_state:"California, lucky_number:9, birthday: \{month:8, day:2, year:1988\}\})\
+2017-03-16T14:29:47.197-0700 E QUERY    [thread1] SyntaxError: unterminated string literal @(shell):1:44\
+> db.students.insert(\{name: "Kobe", home_state:"Pennsylvania", lucky_number:8, birthday: \{month:8, day:23, year:1978\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name:"Amer", home_state:"California", lucky_number:9, birthday: \{month:8, day:2, year:1988\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Michael", home_state:"New York", lucky_number:23, birthday: \{month:2, day:17, year:1963\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Russell", home_state:"California", lucky_number:0, birthday: \{month:11, day:12, year:1988\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Eminem", home_state:"Michigan", lucky_number:3, birthday: \{month:10, day:17, year:1973\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.find()\
+\{ "_id" : ObjectId("58cb0405ca7ed9c9a0f31bc1"), "name" : "Kobe", "home_state" : "Pennsylvania", "lucky_number" : 8, "birthday" : \{ "month" : 8, "day" : 23, "year" : 1978 \} \}\
+\{ "_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"), "name" : "Amer", "home_state" : "California", "lucky_number" : 9, "birthday" : \{ "month" : 8, "day" : 2, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb0449ca7ed9c9a0f31bc3"), "name" : "Michael", "home_state" : "New York", "lucky_number" : 23, "birthday" : \{ "month" : 2, "day" : 17, "year" : 1963 \} \}\
+\{ "_id" : ObjectId("58cb0451ca7ed9c9a0f31bc4"), "name" : "Russell", "home_state" : "California", "lucky_number" : 0, "birthday" : \{ "month" : 11, "day" : 12, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb045eca7ed9c9a0f31bc5"), "name" : "Eminem", "home_state" : "Michigan", "lucky_number" : 3, "birthday" : \{ "month" : 10, "day" : 17, "year" : 1973 \} \}\
+> db.students.find().pretty()\
+\{\
+	"_id" : ObjectId("58cb0405ca7ed9c9a0f31bc1"),\
+	"name" : "Kobe",\
+	"home_state" : "Pennsylvania",\
+	"lucky_number" : 8,\
+	"birthday" : \{\
+		"month" : 8,\
+		"day" : 23,\
+		"year" : 1978\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"),\
+	"name" : "Amer",\
+	"home_state" : "California",\
+	"lucky_number" : 9,\
+	"birthday" : \{\
+		"month" : 8,\
+		"day" : 2,\
+		"year" : 1988\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("58cb0449ca7ed9c9a0f31bc3"),\
+	"name" : "Michael",\
+	"home_state" : "New York",\
+	"lucky_number" : 23,\
+	"birthday" : \{\
+		"month" : 2,\
+		"day" : 17,\
+		"year" : 1963\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("58cb0451ca7ed9c9a0f31bc4"),\
+	"name" : "Russell",\
+	"home_state" : "California",\
+	"lucky_number" : 0,\
+	"birthday" : \{\
+		"month" : 11,\
+		"day" : 12,\
+		"year" : 1988\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("58cb045eca7ed9c9a0f31bc5"),\
+	"name" : "Eminem",\
+	"home_state" : "Michigan",\
+	"lucky_number" : 3,\
+	"birthday" : \{\
+		"month" : 10,\
+		"day" : 17,\
+		"year" : 1973\
+	\}\
+\}\
+> db.students.find(\{$or: [\{home_state:"California"\}, \{home_state:"New York"\}]\})\
+\{ "_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"), "name" : "Amer", "home_state" : "California", "lucky_number" : 9, "birthday" : \{ "month" : 8, "day" : 2, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb0449ca7ed9c9a0f31bc3"), "name" : "Michael", "home_state" : "New York", "lucky_number" : 23, "birthday" : \{ "month" : 2, "day" : 17, "year" : 1963 \} \}\
+\{ "_id" : ObjectId("58cb0451ca7ed9c9a0f31bc4"), "name" : "Russell", "home_state" : "California", "lucky_number" : 0, "birthday" : \{ "month" : 11, "day" : 12, "year" : 1988 \} \}\
+> db.students.find(\{lucky_number:\{$gt:3\}\})\
+\{ "_id" : ObjectId("58cb0405ca7ed9c9a0f31bc1"), "name" : "Kobe", "home_state" : "Pennsylvania", "lucky_number" : 8, "birthday" : \{ "month" : 8, "day" : 23, "year" : 1978 \} \}\
+\{ "_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"), "name" : "Amer", "home_state" : "California", "lucky_number" : 9, "birthday" : \{ "month" : 8, "day" : 2, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb0449ca7ed9c9a0f31bc3"), "name" : "Michael", "home_state" : "New York", "lucky_number" : 23, "birthday" : \{ "month" : 2, "day" : 17, "year" : 1963 \} \}\
+> db.students.find(\{lucky_number:\{$lte:10\}\})\
+\{ "_id" : ObjectId("58cb0405ca7ed9c9a0f31bc1"), "name" : "Kobe", "home_state" : "Pennsylvania", "lucky_number" : 8, "birthday" : \{ "month" : 8, "day" : 23, "year" : 1978 \} \}\
+\{ "_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"), "name" : "Amer", "home_state" : "California", "lucky_number" : 9, "birthday" : \{ "month" : 8, "day" : 2, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb0451ca7ed9c9a0f31bc4"), "name" : "Russell", "home_state" : "California", "lucky_number" : 0, "birthday" : \{ "month" : 11, "day" : 12, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb045eca7ed9c9a0f31bc5"), "name" : "Eminem", "home_state" : "Michigan", "lucky_number" : 3, "birthday" : \{ "month" : 10, "day" : 17, "year" : 1973 \} \}\
+> db.students.find(\{$and:[\{lucky_number:\{$lte:9\}\}, \{lucky_number:\{$gte:1\}\}]\})\
+\{ "_id" : ObjectId("58cb0405ca7ed9c9a0f31bc1"), "name" : "Kobe", "home_state" : "Pennsylvania", "lucky_number" : 8, "birthday" : \{ "month" : 8, "day" : 23, "year" : 1978 \} \}\
+\{ "_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"), "name" : "Amer", "home_state" : "California", "lucky_number" : 9, "birthday" : \{ "month" : 8, "day" : 2, "year" : 1988 \} \}\
+\{ "_id" : ObjectId("58cb045eca7ed9c9a0f31bc5"), "name" : "Eminem", "home_state" : "Michigan", "lucky_number" : 3, "birthday" : \{ "month" : 10, "day" : 17, "year" : 1973 \} \}\
+> db.students.update(\{\}, \{$set: \{"interests":['coding', 'brunch', 'MongoDB']\}\}, \{multi:true\})\
+WriteResult(\{ "nMatched" : 5, "nUpserted" : 0, "nModified" : 5 \})\
+> db.students.update(\{name: "Amer"\}, \{$push: \{interests:\{$each:['soccer', 'basketball']\}\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.find(\{name:"Amer"\}).pretty()\
+\{\
+	"_id" : ObjectId("58cb0431ca7ed9c9a0f31bc2"),\
+	"name" : "Amer",\
+	"home_state" : "California",\
+	"lucky_number" : 9,\
+	"birthday" : \{\
+		"month" : 8,\
+		"day" : 2,\
+		"year" : 1988\
+	\},\
+	"interests" : [\
+		"coding",\
+		"brunch",\
+		"MongoDB",\
+		"soccer",\
+		"basketball"\
+	]\
+\}\
+> db.students.update(\{name: "Russell"\},\{$push: \{interests:\{$each:['basketball', 'slam dunks']\}\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{name: "Michael"\},\{$push: \{interests:\{$each:['basketball', 'being the GOAT']\}\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{name: "Eminem"\},\{$push: \{interests:\{$each:['rapping', 'Haillie']\}\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> \
+> db.students.update(\{name:"Kobe"\}, \{$push: \{interests:"taxes"\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{name: "Kobe"\},\{$pull: \{interests: "taxes"\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.remove(\{$or: [\{home_state:"California"\}, \{home_state:"Michigan"\}]\})\
+WriteResult(\{ "nRemoved" : 3 \})\
+> db.students.remove(\{name:"Eminem"\})\
+WriteResult(\{ "nRemoved" : 0 \})\
+> db.students.remove(\{lucky_number: \{$gt:5\}\}, \{justOne:true\})\
+WriteResult(\{ "nRemoved" : 1 \})\
+> db.students.update(\{\}, \{$set:\{"number_of_belts":0\}\}, \{multi: true\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{home_state: "New York"\}, \{$inc: \{number_of_belts:1\}\}, \{multi:true\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{\}, \{$rename: \{"number_of_belts":"belts_earned"\}\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{\}, \{$unset:\{lucky_number:""\}\},\{multi:true\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.update(\{\}, \{$currentDate:\{updated_on:true\}\},\{multi:true\})\
+WriteResult(\{ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 \})\
+> db.students.find().prety()\
+2017-03-16T14:55:11.874-0700 E QUERY    [thread1] TypeError: db.students.find(...).prety is not a function :\
+@(shell):1:1\
+> db.students.find().pretty()\
+\{\
+	"_id" : ObjectId("58cb0449ca7ed9c9a0f31bc3"),\
+	"name" : "Michael",\
+	"home_state" : "New York",\
+	"birthday" : \{\
+		"month" : 2,\
+		"day" : 17,\
+		"year" : 1963\
+	\},\
+	"interests" : [\
+		"coding",\
+		"brunch",\
+		"MongoDB",\
+		"basketball",\
+		"being the GOAT"\
+	],\
+	"belts_earned" : 1,\
+	"updated_on" : ISODate("2017-03-16T21:54:58.282Z")\
+\}\
+> \
+\
+\
+}
