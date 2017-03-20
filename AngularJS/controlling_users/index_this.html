@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+    <head>
+        <meta charset="utf-8">
+        <title>Control Users</title>
+        <script src='bower_components/angular/angular.js'></script>
+        <script type="text/javascript">
+            var app = angular.module('app',[]);
+            app.factory('userFactory', [function(){
+                var factory = [];
+                var users = [];
+                factory.create = function(data, callback){
+                   users.push(data);
+                   callback();
+                };
+                factory.index = function(callback){
+                    callback(users);
+                };
+                factory.delete = function(callback){
+                    users.splice(id,1);
+                    callback()
+                };
+                return factory;
+            }]);
+            app.controller('usersController', ['usersFactory', UsersController]);
+
+           function UsersController(usersFactory) {
+           var _this = this;
+           this.order = 'firstName';
+           this.users = [];
+           this.user = {};
+           this.index = function() {
+               usersFactory.index(function(data) {
+                   console.log(data);
+                   _this.users = data;
+                   _this.user = {};
+               });
+           }
+           this.create = function() {
+               usersFactory.create(this.user, this.index);
+           }
+           this.delete = function(id) {
+               usersFactory.delete(id, this.index);
+           }
+       }
+        </script>
+    </head>
+    <body>
+        <div ng-controller="usersController as UC">
+            <fieldset>
+                <legend>UsersController</legend>
+                <form ng-submit="UC.create();">
+                    <input type="text" ng-model="UC.user.firstName" placeholder="First Name">
+                    <input type="text" ng-model="UC.user.lastName" placeholder="Last Name">
+                    <input type="text" ng-model="UC.user.favoriteLanguage" placeholder="Favorite Language">
+                    <input type="date" ng-model="UC.user.createdAt" placeholder="Date Created">
+                    <input type="submit" value="add user">
+                </form>
+            </fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Favorite Language</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <button ng-click="UC.order = 'firstName'">order</button>
+                    </td>
+                    <td>
+                        <button ng-click="UC.order = 'lastName'">order</button>
+                    </td>
+                    <td>
+                        <button ng-click="UC.order = 'favoriteLanguage'"> order</button>
+                    </td>
+                    <td>
+                        <button ng-click="UC.order = 'createdAt'">order</button>
+                    </td>
+                    <td> </td>
+                </tr>
+                <!-- THE ORDER BY! -->
+                <tbody ng-repeat="user in UC.users | orderBy:UC.order track by $index">
+                    <tr>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.favoriteLanguage}}</td>
+                        <td ng-bind="user.createdAt | date:'mediumDate'"></td>
+                        <td>
+                            <button ng-click="UC.delete($index)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
